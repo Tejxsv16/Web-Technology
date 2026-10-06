@@ -1,5 +1,16 @@
+body{
+    background-color: white;
+    
+}
+
+ul{
+    border: 2px solid blue;
+    list-style: none;
+    display: inline;
+}
+
 .welcome {
-    border: 2px solid black;
+    border: 2px solid black !important;
     margin: 30px;
     padding: 20px;
     text-align: center;
@@ -35,7 +46,7 @@ footer {
     margin-top: 30px;
 }
 body{
-    background-color: grey;
+    background-color: white;
 }
 
 
@@ -212,4 +223,73 @@ body{
 .gallery-card:hover {
     transform: scale(1.03);
     box-shadow: 0 6px 15px #aaa;
+}
+.nav-container{
+    display:flex;
+    list-style:none;
+    max-width: 100%;
+    
+
+}
+.container{
+    display:flex;
+    list-style:none;
+    padding:20px;
+    background-color: #004080;
+    margin-top: 80px;
+    margin-left: 400px;
+    
+    
+
+}
+a{
+    padding:20px;
+    color:white;
+    text-decoration: none;
+}
+.photo{
+   width : 70%;
+   padding-left:13%;
+   height : 500px;
+}
+header{
+    position:relative;
+
+}
+.college-name{
+     text-align: center;
+}
+.student-corner a{
+    border:2px solid blue;
+    padding:8px 12px;
+    color: white;
+    margin-left: 1200px;
+    background-color: #004080;
+    
+}
+.student,
+.marks,
+.attendance,
+.result {
+    border: 2px solid black;
+    margin: 30px;
+    padding: 20px;
+}
+
+.student h2,
+.marks h2,
+.attendance h2,
+.result h2 {
+    text-align: center;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 10px;
+    text-align: center;
 }
