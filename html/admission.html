@@ -1,47 +1,102 @@
- <!DOCTYPE html>
-<html>
-
+<!DOCTYPE html>
 <head>
-    <title>Gcet Website</title>
-    <link rel="stylesheet" href="style2.css">
-</head>
 
+    <title>Student Admission Form - GCET </title>
+    <link rel="stylesheet" href="style.css">
+</head>
 <body>
 
-<header>
+    <header>
+        <a href="index.html" class="logo-link">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvGB3Zis8O01MXcvg_YMdwSM3hnyexH87D4pAazZvnjQ&s=10" alt="College Logo" class="logo-img">
+  </a>
+        <h1>Govt. College of Engineering and Technology - Jammu </h1>
+        <p class="heading">Join Our Academic Community</p>
 
-    <img align = "left" id="logo"
-    src="data:image/jpeg;base64,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"
-    alt="College Logo">
-
-    <div>
-        <h1 align = "center">Govt. College of Engineering and Technology, Jammu</h1>
-        <h3 align = "center">(Autonomous College)</h3>
-    </div>
-</header>
-<div class = "nav-container">
-    <ul class = "container">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="faculty.html">Faculty</a></li>
-    <li><a href="gallery.html">Gallery</a></li>
-    <li><a href="admission.html">Admission</a></li>
-    <li><a href="contact.html">Contact</a></li>
-</ul>
-    </div>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="faculty.html">Faculty</a></li>
+            <li><a href="gallery.html">Photo Gallery</a></li>
+            <li><a href="admission.html">Admission Form</a></li>
+        </ul>
+    </nav>
+    </header>
+    
 
 
- <center>
-            <h1>College Admission Form</h1>
-            <form action = "https://www.youtube.com/" method = "post">
-             Name : <input type="text" name ="name" required ><br><br>
-            Roll NO : <input type="number" name = "rollno" required><br><br>
-            Phone : <input type = "tel" name = "phone" required><br><br>
-            Gender : <input type = "radio" name = "gender" value = "male">Male<input type ="radio" name = "gender" value = Female>Female<br><br>
-            Course : <select name = "course"><option>B.Tech</option><option>BBA</option><option>BA</option><option>B.Sc</option></select><br><br>
-            Hobbies : <input type ="checkbox" name = "hobby" value = "sports">Sports<input type ="checkbox" name = "hobby" value = "reading">Reading<input type ="checkbox" name = "hobby" value = "music">Music<br><br>
-            <img src ="https://www.shutterstock.com/shutterstock/photos/1255455004/display_1500/stock-vector-circle-rubber-stamp-with-the-text-admission-admission-rubber-stamp-label-badge-logo-seal-1255455004.jpg" width = "250" height = "250"><br><br>
-            <input type = "submit" value = "Submit">
+    <main>
+        <section>
+            <h2>Admission Application Form</h2>
+            <form action="C:\Users\DARK KNIGHT\timepass\index.html" method="get">
+                
+                <div class="form-group">
+                    <label for="name">Full Name:</label>
+                    <input type="text" id="name" name="name" required placeholder="Enter your full name">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address:</label>
+                    <input type="email" id="email" name="email" required placeholder="example@domain.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="dob">Date of Birth:</label>
+                    <input type="date" id="dob" name="dob" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="mobile">Mobile Number:</label>
+                    <input type="text" id="mobile" name="mobile" required placeholder="Enter 10-digit number">
+                </div>
+
+                <div class="form-group">
+                    <label>Gender:</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="gender" value="male" required> Male</label>
+                        <label><input type="radio" name="gender" value="female"> Female</label>
+                        <label><input type="radio" name="gender" value="other"> Other</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="course">Preferred Course:</label>
+                    <select id="course" name="course" required>
+                        <option value="">-- Select a Stream --</option>
+                        <option value="cse">Computer Science & Engineering</option>
+                        <option value="it">Information Technology</option>
+                        <option value="ece">Electronics & Communication</option>
+                        <option value="me">Mechanical Engineering</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Hobbies:</label>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="hobbies" value="coding"> Coding</label>
+                        <label><input type="checkbox" name="hobbies" value="sports"> Sports</label>
+                        <label><input type="checkbox" name="hobbies" value="music"> Music</label>
+                        <label><input type="checkbox" name="hobbies" value="reading"> Reading</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="address">Permanent Address:</label>
+                    <textarea id="address" name="address" rows="4" required placeholder="Enter street, city, state, zip code..."></textarea>
+                </div>
+
+                <div class="btn-container">
+                    <button type="submit" class="btn btn-submit">Submit Application</button>
+                    <button type="reset" class="btn btn-reset">Reset Form</button>
+                </div>
+
             </form>
-        </center>
-     </body>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Govt. College of Engineering and Technology - Jammu  | Contact: info@GCETJammu.edu</p>
+    </footer>
+
+</body>
 </html>
