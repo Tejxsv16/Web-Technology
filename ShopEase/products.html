@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopEase | Products</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header class="site-header">
+        <div class="nav-container">
+            <a class="logo" href="index.html">Shop<span>Ease</span></a>
+            <nav>
+                <a href="index.html">Home</a><a class="active" href="products.html">Products</a>
+                <a href="index.html#categories">Categories</a><a href="about.html">About Us</a><a href="contact.html">Contact Us</a>
+            </nav>
+            <div class="nav-actions"><a class="cart-link" href="#cart">Cart (<span class="cart-count">0</span>)</a><button class="theme-toggle" type="button">🌙</button></div>
+        </div>
+    </header>
+
+    <main class="page-main">
+        <section class="page-intro"><p class="eyebrow">THE SHOP</p><h1>Our Products</h1><p>Explore the collection and find your next favourite.</p></section>
+        <section class="section products-section">
+            <div class="product-controls">
+                <input id="product-search" type="search" placeholder="Search products..." aria-label="Search products">
+                <div class="filter-buttons">
+                    <button class="filter-button selected" data-category="All">All</button>
+                    <button class="filter-button" data-category="Electronics">Electronics</button>
+                    <button class="filter-button" data-category="Clothing">Clothing</button>
+                    <button class="filter-button" data-category="Accessories">Accessories</button>
+                </div>
+            </div>
+            <p id="results-message" class="results-message" aria-live="polite"></p>
+            <div class="product-grid" id="all-products"></div>
+        </section>
+
+        <section class="section cart-section" id="cart">
+            <div class="section-heading"><div><p class="eyebrow">YOUR PICKS</p><h2>Shopping Cart</h2></div></div>
+            <div id="cart-items" class="cart-items"></div>
+            <div class="cart-total"><strong>Total: <span id="cart-total">₹0</span></strong><button id="clear-cart" class="button button-outline" type="button">Clear Cart</button></div>
+            <p class="small-note">Demo cart only. Checkout and payments are not enabled.</p>
+        </section>
+    </main>
+    <footer class="footer">
+        <div><a class="logo footer-logo" href="index.html">Shop<span>Ease</span></a><p>Simple shopping for everyday life.</p></div>
+        <div class="footer-links"><a href="about.html">About</a><a href="contact.html">Contact</a><a href="products.html">Products</a></div>
+        <p class="copyright">© <span class="year"></span> ShopEase. Student mini project.</p>
+    </footer>
+
+    <dialog id="product-dialog" class="product-dialog">
+        <button class="dialog-close" id="dialog-close" aria-label="Close details">×</button>
+        <div id="dialog-content"></div>
+    </dialog>
+</body>
+</html>
