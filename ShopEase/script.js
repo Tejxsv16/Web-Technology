@@ -14,6 +14,7 @@ const products = [
 
 let selectedCategory = "All";
 let cart = loadCart();
+let wishlist = loadWishlist();
 
 function formatPrice(price) {
     return "₹" + price.toLocaleString("en-IN");
@@ -31,6 +32,37 @@ function saveCart() {
     localStorage.setItem("shopease-cart", JSON.stringify(cart));
 }
 
+function loadWishlist() {
+    try {
+        return JSON.parse(localStorage.getItem("shopease-wishlist")) || [];
+    } catch (error) {
+        return [];
+    }
+}
+
+function saveWishlist() {
+    localStorage.setItem("shopease-wishlist", JSON.stringify(wishlist));
+}
+
+function updateWishlistCount() {
+    document.querySelectorAll(".wishlist-count").forEach(function (element) {
+        element.textContent = wishlist.length;
+    });
+}
+
+function toggleWishlist(productId) {
+    if (wishlist.includes(productId)) {
+        wishlist = wishlist.filter(function (id) { return id !== productId; });
+    } else {
+        wishlist.push(productId);
+    }
+    saveWishlist();
+    updateWishlistCount();
+    showProducts(products.slice(0, 4), document.getElementById("featured-products"));
+    filterProducts();
+    renderWishlist();
+}
+
 function updateCartCount() {
     const count = cart.reduce((total, item) => total + item.quantity, 0);
     document.querySelectorAll(".cart-count").forEach(function (element) {
@@ -43,6 +75,7 @@ function productCard(product) {
         <article class="product-card">
             <div class="product-image">
                 <img src="${product.image}" alt="${product.name}" loading="lazy">
+                <button class="wishlist-button ${wishlist.includes(product.id) ? "is-saved" : ""}" data-wishlist-id="${product.id}" type="button" aria-label="${wishlist.includes(product.id) ? "Remove from" : "Add to"} wishlist" title="${wishlist.includes(product.id) ? "Remove from wishlist" : "Add to wishlist"}">${wishlist.includes(product.id) ? "♥" : "♡"}</button>
             </div>
             <div class="product-info">
                 <p class="product-category">${product.category}</p>
@@ -81,6 +114,15 @@ function addToCart(productId) {
     updateCartCount();
     renderCart();
     alert("Product added to your demo cart!");
+}
+
+function renderWishlist() {
+    const container = document.getElementById("wishlist-products");
+    const message = document.getElementById("wishlist-message");
+    if (!container) return;
+    const savedProducts = products.filter(function (product) { return wishlist.includes(product.id); });
+    if (message) message.textContent = savedProducts.length + " saved product(s).";
+    showProducts(savedProducts, container);
 }
 
 function renderCart() {
@@ -209,6 +251,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     setupTheme();
     updateCartCount();
+    updateWishlistCount();
 
     // Home page featured products.
     showProducts(products.slice(0, 4), document.getElementById("featured-products"));
@@ -228,7 +271,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    // Allow category links from the home page to preselect a category.
+    
     const params = new URLSearchParams(window.location.search);
     const requestedCategory = params.get("category");
     if (requestedCategory && ["Electronics", "Clothing", "Accessories"].includes(requestedCategory)) {
@@ -239,14 +282,18 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     filterProducts();
     renderCart();
+    renderWishlist();
 
-    // Event delegation handles buttons inside product cards and the cart.
+   
     document.addEventListener("click", function (event) {
         const addButton = event.target.closest(".add-button");
         if (addButton) addToCart(Number(addButton.dataset.id));
 
         const detailsButton = event.target.closest(".details-button");
         if (detailsButton) openProductDetails(Number(detailsButton.dataset.id));
+
+        const wishlistButton = event.target.closest("[data-wishlist-id]");
+        if (wishlistButton) toggleWishlist(Number(wishlistButton.dataset.wishlistId));
 
         const dialogAddButton = event.target.closest(".dialog-add-button");
         if (dialogAddButton) {
